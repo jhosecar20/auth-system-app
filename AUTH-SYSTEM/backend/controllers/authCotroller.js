@@ -1,17 +1,20 @@
-const login  = async (req,res)=>{
+const {User}= require("../shared/models")
+const {generateToken}= require  ("../shared/utils/jwt")
+
+
+const register    = async (req,res)=>{
     try{
-        res.json({
-            message: "login exitoso",
-            status: "success"
+        const {username, email, password, documentNumber} = req.cody;
 
-        });
-
-    } catch (error){
-        res 
-        .status(500)
-        .json({message: " error interno", status: "error", error: error});
+        const existingUser = await User.findOne ({where:(email)});
+        if (existingUser){
+            return res.status(400).json ({
+                messege:"el ususario ya existe",
+                timestamp: new Date ().toISOString(),
+                status: "error"
+            });
+        }
+    } catch(error){
+        
     }
-};
-module.exports ={
-    login,
 }

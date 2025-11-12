@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "create-user": "node test/createUser.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "create-user": "node seeders/createUser.js"
   },
   "keywords": [],
   "author": "",
